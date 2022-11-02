@@ -13,7 +13,7 @@ process.on('SIGINT', function() {
     process.exit(0);
 });
 
-
+// Prevent CORS error
 app.use(cors());
 
 const pool = new Pool({
@@ -27,44 +27,12 @@ const pool = new Pool({
 
 
 app.get('/', (req, res) => {
-    const data = {name: 'Leah'};
-    // res.render('index', data);
-    // console.log(data);
+    // Replace Student with your name!
+    const data = {name: 'Student'};
+    
+    // send data as json instead of rendering view
     res.json(data);
 });
-
-// app.get('/user', (req, res) => {
-//     teammembers = []
-//     pool
-//         .query('SELECT * FROM teammembers;')
-//         .then(query_res => {
-//             for (let i = 0; i < query_res.rowCount; i++){
-//                 teammembers.push(query_res.rows[i]);
-//             }
-//             const data = {teammembers: teammembers};
-//             // console.log(teammembers);
-//             // res.render('user', data);
-//             res.json(teammembers);
-//         });
-
-
-// });
-
-// app.get('/pokemon', (req, res) => {
-//     axios.get('https://pokeapi.co/api/v2/pokemon/charizard')
-//     .then(response => {
-//         if(response.status == 200) {
-//             // console.log(response);
-//             const data = {'pokemon':response.data};
-//             res.render('pokemon', data);
-//         }
-//         else {
-//             alert("Error!");
-//         }
-        
-//     });
-
-// });
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

@@ -39,7 +39,7 @@ app.get('/user', (req, res) => {
                 teammembers.push(query_res.rows[i]);
             }
             const data = {teammembers: teammembers};
-            console.log(teammembers);
+            // console.log(teammembers);
             res.render('user', data);
         });
 
@@ -50,7 +50,7 @@ app.get('/pokemon', (req, res) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/charizard')
     .then(response => {
         if(response.status == 200) {
-            console.log(response);
+            // console.log(response);
             const data = {'pokemon':response.data};
             res.render('pokemon', data);
         }

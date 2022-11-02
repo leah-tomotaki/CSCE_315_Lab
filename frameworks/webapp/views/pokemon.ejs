@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<head>
+   <title>Home Page</title>
+</head>
+<body>
+   <h1><%=pokemon.name%></h1>
+   <% for (var i in pokemon.moves) {%>
+       <li><%=pokemon.moves[i].move.name%></li>
+   <% } %>
+</body>

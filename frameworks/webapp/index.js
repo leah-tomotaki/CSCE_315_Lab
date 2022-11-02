@@ -1,6 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 const dotenv = require('dotenv').config();
+const axios = require('axios');
 
 const app = express();
 const port = 3000;
@@ -42,6 +43,22 @@ app.get('/user', (req, res) => {
             res.render('user', data);
         });
 
+
+});
+
+app.get('/pokemon', (req, res) => {
+    axios.get('https://pokeapi.co/api/v2/pokemon/charizard')
+    .then(response => {
+        if(response.status == 200) {
+            console.log(response);
+            const data = {'pokemon':response.data};
+            res.render('pokemon', data);
+        }
+        else {
+            alert("Error!");
+        }
+        
+    });
 
 });
 

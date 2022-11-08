@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "cd server && node index.js",
+    "server": "cd server && nodemon",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +18,11 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "path": "^0.12.7",
     "pg": "^8.8.0",
     "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0"
   }
 }

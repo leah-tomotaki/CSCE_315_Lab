@@ -3,6 +3,7 @@ const { Pool } = require('pg');
 const dotenv = require('dotenv').config();
 const axios = require('axios');
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 const port = 5000;
@@ -37,3 +38,12 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
+
+app.use(express.static(path.join(process.cwd(),"../client","build")));
+
+app.get('*', (req, res) => {
+    return res.sendFile(path.join(process.cwd(),"../client", "build","index.html"));
+})
+
+app.use(express.static(
+    path.join(__dirname,"../client/build")));

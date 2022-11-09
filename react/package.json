@@ -8,7 +8,8 @@
     "server": "cd server && node index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm run build --prefix client"
+    "build": "npm run build --prefix client",
+    "client:install": "npm install react-scripts --save --prefix client"
   },
   "author": "",
   "license": "ISC",
